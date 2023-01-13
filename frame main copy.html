@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    div{
+        font-family: 'Quicksand';
+    }    
+    body{
+        font-family: 'Quicksand';
+    }
+        #sortableImgThumbnailPreview{
+        display: inline-flex;
+        flex-direction: row;
+}   
+@media only screen and (max-width: 700px) {
+  #sortableImgThumbnailPreview{
+    display: block;
+}
+.uploadbuttontext{
+    font-size: 14px;
+}
+}
+.RearangeBox.dragElemThumbnail{opacity:0.6;}
+        .RearangeBox {
+    width: 148px;
+    height: 210px;
+    padding: 10px;
+    cursor: all-scroll;
+    float: none;
+    border: 1px solid #9E9E9E;
+    font-family: sans-serif;
+    display: inline-block;
+    margin: 9px!important;
+    text-align: center;
+    color: #673ab7;
+    background:black;
+  
+}
+
+.IMGthumbnail{
+    max-width:100%;
+    height:100%;
+    margin:auto;
+  background-color: #fafafa;
+  padding:21px;
+  border:none;
+  background-color:white;
+  padding:21px;
+  box-shadow: 0px 0px 10px #0000001f;
+
+}
+
+.content{
+    text-align: center;
+}
+
+
+.upload-button{
+    width: 20%;
+    background: white;
+    height: 100px;
+    box-shadow: 2px 2px 20px #00000012;
+    border-radius: 9px;
+    margin: auto;
+}
+
+.IMGthumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100% !important;
+    width: auto !important;
+    object-fit: cover;
+}
+
+.imgThumbContainer{
+
+  margin:4px;
+  border: solid;
+  display: inline-block;
+  justify-content: center;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.14);
+  -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    box-shadow: -6px 0px 17px #000000c9;
+}
+
+
+
+.imgThumbContainer > .imgName{
+  text-align:center;
+  padding: 2px 6px;
+  margin-top:4px;
+  font-size:13px;
+  height: 15px;
+  overflow: hidden;
+}
+
+.imgThumbContainer > .imgRemoveBtn {
+    position: absolute;
+    color: #e91e63ba;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+    display: none;
+    background: white;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px #000000b0;
+    z-index: 1000;
+}
+
+.RearangeBox:hover > .imgRemoveBtn{ 
+    display: block;
+}
+
+.RearangeBox:hover > .imgcropBtn{ 
+    display: block;
+}
+
+
+
+.RearangeBox:hover .IMGthumbnail{
+        filter: brightness(0.5);
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px !important;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.RearangeBox:hover > .imgRemoveBtn {
+    display: block;
+}
+.RearangeBox:hover > .imgcropBtn {
+    display: block;
+}
+.imgThumbContainer > .imgcolorbtn{
+    position: absolute;
+    color: #e91e63ba;
+    right: 7px;
+    top: 104px;
+    cursor: pointer;
+    padding: 6px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px #000000b0;
+    z-index: 1000;
+      display:none;
+}
+
+.imgThumbContainer > .imgsize{
+    position: absolute;
+    color: #e91e63ba;
+    right: 7px;
+    top: 152px;
+    cursor: pointer;
+    padding: 6px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px #000000b0;
+    z-index: 1000;
+    display:none;
+}
+
+.RearangeBox:hover > .imgsize{ 
+    display: block;
+}
+
+.RearangeBox:hover > .imgcolorbtn{ 
+    display: block;
+}
+
+.choosecolor, .choosesize, .choosematerial{
+    display:none;
+}
+        #output{
+
+            vertical-align: middle;
+            text-align: center;
+            max-height: 100%; height: 100% !important ; object-fit: cover; overflow: hidden;
+        }
+    </style>
+    <script>
+function turnwhite(cropnum){
+var mainid= "index" + cropnum;
+var celement = document.getElementById(mainid);
+celement.style.backgroundColor = 'white';  
+celement.style.backgroundImage = 'none';
+localStorage.setItem("color"+cropnum, 'white'); 
+var mainid = "choosecolor"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "none";
+ localStorage.setItem("color"+cropnum,"white");
+}
+
+function turnblack(cropnum){
+
+var mainid= "index" + cropnum;
+var celement = document.getElementById(mainid);
+celement.style.backgroundColor = 'black';  
+celement.style.backgroundImage = 'none';
+localStorage.setItem("color"+cropnum, 'black'); 
+var mainid = "choosecolor"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "none";
+    localStorage.setItem("color"+cropnum,"black");
+}
+
+
+
+
+
+function updatesize(cropnum){
+    var mainid= "index" + cropnum;
+    var selectedsize = document.getElementById("sizeoptions"+cropnum).value;
+    var selectedwidth;
+    var selectedheight;
+    if (selectedsize == "A5"){
+        selectedwidth = "148px";
+        selectedheight = "210px";
+    }
+    
+     if (selectedsize == "A4"){
+        selectedwidth = "210px";
+        selectedheight = "297px";
+    }
+    
+     if (selectedsize == "A3"){
+        selectedwidth = "297px";
+        selectedheight = "420px";
+    }
+    
+    var tile = document.getElementById(mainid);
+    tile.style.width = selectedwidth;
+    tile.style.height = selectedheight;
+    localStorage.setItem("size"+cropnum, selectedsize); 
+    var mainid = "choosesize"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "none";
+var celement = document.getElementById("ssize"+cropnum);
+celement.innerHTML = selectedsize;
+
+
+
+
+}
+
+
+
+function colorframe(cropnum){
+var mainid = "choosecolor"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "block";
+var mainid = "choosesize"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "none";
+}
+
+
+
+function sizeframe(cropnum){
+var mainid = "choosesize"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "block";
+var mainid = "choosecolor"+cropnum;
+var celement = document.getElementById(mainid);
+celement.style.display = "none";
+
+
+}
+
+
+
+
+
+function syncoldsize(i){
+    selectedsize = localStorage.getItem("size"+i);
+    var selectedwidth;
+    var selectedheight;
+    if (selectedsize == "A5"){
+        selectedwidth = "148px";
+        selectedheight = "210px";
+    }
+    
+     if (selectedsize == "A4"){
+        selectedwidth = "210px";
+        selectedheight = "297px";
+    }
+    
+     if (selectedsize == "A3"){
+        selectedwidth = "297px";
+        selectedheight = "420px";
+    }
+    
+      
+    var mainid = "index" + i;
+    var tile = document.getElementById(mainid);
+    tile.style.width = selectedwidth;
+    tile.style.height = selectedheight;
+    var celement = document.getElementById("ssize"+i);
+celement.innerHTML = selectedsize;
+}
+
+
+//IMAGE ARRAY;
+var imageListIndex = [];
+var imagesList = [];
+var imageTab = 0;
+
+//PRICEEE
+var bhav = 0;
+const bhavupdate = () => {
+    document.getElementById('bhaav').innerHTML = bhav;
+}
+//imagedelete
+
+const removeImagePrev = (event) => {
+    event.target.parentElement.remove();
+}
+
+//PRICE UPDATE
+
+
+
+
+
+//IMAGE LOAD
+        var loadFile = function(event) {
+    var container = document.getElementById('sortableImgThumbnailPreview'); 
+    const imageUrl = URL.createObjectURL(event.target.files[0]);
+    imagesList.push(imageUrl);
+    console.log(imagesList);
+    var framemaker = "";
+    imagesList.forEach((url, index) => {
+        framemaker =  framemaker + `<div class="RearangeBox rmbox imgThumbContainer" id="index${index}" style="padding: 10px; background-color: black; background-size: contain;">
+        <i class="material-icons imgRemoveBtn" onclick="removeImagePrev(event)">delete</i>
+        <i style="color: #e91e63ba;font-family: Quicksand;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;" class="material-icons imgcolorbtn" id="color0" onclick="colorframe(${index})">color</i>
+        <i class="material-icons imgsize" id="size0" onclick="sizeframe(${index})" style="color: #e91e63ba;font-family: Quicksand;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;">size</i>
+        <div class="IMGthumbnail" id="bg0" style="background-color: rgb(250, 250, 250); padding: 0px;">
+            <img src="${url}" id="output">
+        </div>
+        <div class="choosecolor" id="choosecolor${index}" style="position: absolute; width: 92%; bottom: 5%; margin: auto; display: none;">
+            <div style="padding-top: 0.7em;display: flex; flex-wrap: wrap; justify-content: space-around;margin-top: 25px;background: white !important;box-shadow: 0px 0px 10px #00000014;padding-left: 12px;padding-right: 12px;padding-bottom: 0.7em;border-radius: 12px">
+                 <div id="ccblack1" onclick="turnblack(${index})" class="cselected" style="background: black;width: 1.5em;height: 1.5em;border-radius: 85px;cursor: pointer;border: 1px solid #c2c2;box-shadow: -1px 0px 85px #00000057;">
+                </div>
+                 <div id="ccwhite1" onclick="turnwhite(${index})" style="background: white;width: 1.5em;height: 1.5em;border-radius: 85px;cursor: pointer;border: 1px solid #c2c2c2;box-shadow: -1px 0px 85px #00000057;"></div>
+            </div>
+        </div>
+        <div class="choosesize" id="choosesize${index}" style="position: absolute; width: 92%; bottom: 5%; margin: auto; display: none;">
+            <div style="padding-top: 0.7em;display: flex; flex-wrap: wrap; justify-content: space-around;margin-top: 25px;background: white !important;box-shadow: 0px 0px 10px #00000014;padding-left: 12px;padding-right: 12px;padding-bottom: 0.7em;border-radius: 12px"> 
+                <span style="color: black;font-weight: 500;font-family: 'roboto';">Select Size :</span> 
+                <select onchange="updatesize(${index})" name="sizeoptions" id="sizeoptions${index}" style="border: 0px solid #80808014;padding-left: 0.5em;padding-right: 0.5em;">
+                    <option value="A5">A5</option>
+                    <option value="A4">A4</option> 
+                    <option value="A3">A3</option>
+                </select> 
+            </div>
+        </div>
+        <div style="color: black;margin-top: 24px;">Size : <span class="sizerender" id="ssize0">A5</span>
+    </div></div>`
+    })       
+    container.innerHTML = framemaker;
+    imageTab++;
+    
+    var framer = document.getElementById('sortableImgThumbnailPreview')
+    framer.style.removeProperty('display');
+    event.target.value="";
+};
+
+const inputclick = () => {
+    document.getElementById('ima').click();
+}
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame</title>
+</head>
+<body>
+
+
+    <!--custom input box-->
+    <div onclick="inputclick()" class="upload-button photo" style="padding-top: 30px; justify-content: center; margin-top: 30px; width: 20%; text-align: center; vertical-align: middle;" >
+
+        <div class="upload-button-content">
+        <div tabindex="0" class="tile-uploader skeleton">
+        </div>
+        </div>
+        <div class="upload" id="fsupload">
+        <div class="cloud-upload">
+        <svg class="cameraicon" width="39" height="29" viewBox="0 0 39 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5 5C2.23858 5 0 7.23858 0 10V24C0 26.7614 2.23858 29 5 29H34C36.7614 29 39 26.7614 39 24V10C39 7.23858 36.7614 5 34 5H28L26.5029 1.25722C26.1992 0.497902 25.4637 0 24.6459 0H14.3541C13.5363 0 12.8008 0.497903 12.4971 1.25722L11 5H5ZM30.5 9C29.6716 9 29 9.67157 29 10.5C29 11.3284 29.6716 12 30.5 12H33.5C34.3284 12 35 11.3284 35 10.5C35 9.67157 34.3284 9 33.5 9H30.5ZM27 17C27 20.866 23.866 24 20 24C16.134 24 13 20.866 13 17C13 13.134 16.134 10 20 10C23.866 10 27 13.134 27 17ZM20 21C22.2091 21 24 19.2091 24 17C24 14.7909 22.2091 13 20 13C17.7908 13 16 14.7909 16 17C16 19.2091 17.7908 21 20 21Z" fill="#b00e88"></path>
+        </svg><p class="uploadbuttontext">Upload Photos</p><input style="display: none;" type="file" name="ima" oninput="loadFile(event)" id="ima">
+        </div>
+        </div>
+        
+    </div>
+
+
+    
+    <br>
+    <div id="sortableImgThumbnailPreview" style="display: none;">
+    </div>
+<div id="bhaav" style="margin:70px 50px; display: none ;">
+    
+</div>    
+
+    
+    
+</body>
+</html>
