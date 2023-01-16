@@ -123,6 +123,12 @@ function turnwhite(cropnum){
     const removeImagePrev = (event) => {
         event.target.parentElement.remove();
         bhavupdate();
+        if (!document.getElementById('sortableImgThumbnailPreview').hasChildNodes()) {
+            
+            
+                document.getElementById('noimages').style.removeProperty('display');
+            
+        }
     }
     
     
