@@ -1,0 +1,118 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <script src="https://foliotek.github.io/Croppie/croppie.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <link href="https://foliotek.github.io/Croppie/croppie.css" rel="stylesheet">
+    <script src="https://foliotek.github.io/Croppie/croppie.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <script src="https://cdn.scaleflex.it/plugins/filerobot-image-editor/3.12.17/filerobot-image-editor.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="frames.js"></script>
+    
+    <div class="row" style="height:100vh;">
+        <div class="col-10" id="cold10">
+        <div class="content">
+        <div class="upload" id="fsuploadmobile" data-toggle="modal" data-target="#myModal2">
+        <div style="
+            width: 65px;
+            height: 65px;
+            fill: #eb845d;
+            font-weight: 800;
+            padding: 0px;
+            background: #fdf9f7;
+            border-radius: 100px;
+            box-shadow: 0px 0px 18px #0000006b;
+            position: fixed;
+            right: 26px;
+            bottom: 195px;
+            z-index: 9;
+        "> <a  style="font-size: 2rem;" onclick="inputclick()" href="#"><svg id="floatingicon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="122.879px" height="122.88px" viewBox="0 0 122.879 122.88" enable-background="new 0 0 122.879 122.88" xml:space="preserve"><g><path d="M17.995,17.995C29.992,5.999,45.716,0,61.439,0s31.448,5.999,43.445,17.995c11.996,11.997,17.994,27.721,17.994,43.444 c0,15.725-5.998,31.448-17.994,43.445c-11.997,11.996-27.722,17.995-43.445,17.995s-31.448-5.999-43.444-17.995 C5.998,92.888,0,77.164,0,61.439C0,45.716,5.998,29.992,17.995,17.995L17.995,17.995z M57.656,31.182 c0-1.84,1.492-3.332,3.333-3.332s3.333,1.492,3.333,3.332v27.383h27.383c1.84,0,3.332,1.492,3.332,3.332 c0,1.841-1.492,3.333-3.332,3.333H64.321v27.383c0,1.84-1.492,3.332-3.333,3.332s-3.333-1.492-3.333-3.332V65.229H30.273 c-1.84,0-3.333-1.492-3.333-3.333c0-1.84,1.492-3.332,3.333-3.332h27.383V31.182L57.656,31.182z M61.439,6.665 c-14.018,0-28.035,5.348-38.731,16.044C12.013,33.404,6.665,47.422,6.665,61.439c0,14.018,5.348,28.036,16.043,38.731 c10.696,10.696,24.713,16.044,38.731,16.044s28.035-5.348,38.731-16.044c10.695-10.695,16.044-24.714,16.044-38.731 c0-14.017-5.349-28.035-16.044-38.73C89.475,12.013,75.457,6.665,61.439,6.665L61.439,6.665z"></path></g></svg><input style="display: none;" id="ima" oninput="loadFile(event)" type="file"><span style="
+    font-size: 8px;
+    bottom: 9px;
+    position: absolute;
+    left: 17px;
+    font-weight: 600;
+    color: #36502e;
+">UPLOAD</span></a></div>
+        </div>
+        </div>
+        <div  style="text-align: center;" class="cmobileflex" id="cmobileflex1" style="padding:14px; margin:auto;">
+        <p style="
+            text-align: center;
+            position: absolute;
+            top: 2em;
+            left: 0%;
+            font-size: 1.4em;
+            padding: 3em;
+        " id="noimages">Click <span>"+"</span> to upload your photos &amp; select the size</p>
+        <div id="sortableImgThumbnailPreview">
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="checkoutmobile" style="
+    width: 100%;
+    text-align: center;
+    background: white;
+    position: fixed;
+    bottom: 0px;
+">
+<div style="
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 0em;
+    width: 86%;
+    margin: auto;
+    height: 4em;
+">
+
+<div style="display: none;" class="OrderSummary2" id="OrderSummary2" style="width: 50%; display: block;"><div class="summary-item strong" style="
+    font-size: 15px !important;
+    font-weight: 600;
+    float: right;
+    border: 1px solid #b00e8812;
+    padding-left: 1em;
+    padding-right: 2em;
+    border-radius: 4px;
+    background: #b00e880a;
+"><div class="text"><span class="summary-text">Total - &nbsp;&nbsp; </span></div><div class="value">₹ <span id="bhaav"></span></div>
+</div></div>
+<div class="OrderSummary1" id="OrderSummary1" style="width: 50%; display: none;"><div class="summary-item strong" style="
+    font-size: 15px !important;
+    font-weight: 600;
+    float: right;
+    border: 1px solid #b00e8812;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 4px;
+    background: #b00e880a;
+"><div class="text"><span class="summary-text" id="totalholder">Add first frame</span></div>
+</div></div>
+</div>
+<div><p id="mobilemin" style="
+    font-size: 16px;
+  
+"></p></div>
+<button style="
+    margin-top: 0.2em;
+    margin-bottom: 1.2em;
+    height: 42px;
+    width: 70%;
+    font-size: 15px;
+" class="openMenu1 buttondesktop checkoutbutton" id="checkoutbuttonmobile">Checkout</button></div>
+        
+</body>

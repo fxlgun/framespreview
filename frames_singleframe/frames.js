@@ -59,31 +59,8 @@ function turnwhite(cropnum){
     celement.innerHTML = selectedsize;
     
     
-    
-    
     }
-    
-    
-    
-    
-    function updatematerial(cropnum){
-        var mainid= "index" + cropnum;
-        var selectedmaterial = document.getElementById("materialoptions"+cropnum).value;
-       
-    
-        localStorage.setItem("material"+cropnum, selectedmaterial); 
-        var mainid = "choosematerial"+cropnum;
-    var celement = document.getElementById(mainid);
-    celement.style.display = "none";
-    var celement = document.getElementById("smaterial"+cropnum);
-    celement.innerHTML = selectedmaterial;
-    
-    
-    
-    
-    updatepriced();
-    }
-    
+
     
     function colorframe(cropnum){
     var mainid = "choosecolor"+cropnum;
@@ -107,126 +84,6 @@ function turnwhite(cropnum){
     
     }
     
-    function material(cropnum){
-    var mainid = "choosematerial"+cropnum;
-    var celement = document.getElementById(mainid);
-    celement.style.display = "block";
-    var mainid = "choosecolor"+cropnum;
-    var celement = document.getElementById(mainid);
-    celement.style.display = "none";
-    
-    
-    }
-    
-    function updatepriced(){
-     var w8h8matte = 0;
-        var w8h10matte = 0;
-        var w10h8matte = 0;
-         
-                   
-    
-         var rearangeBox = document.getElementsByClassName('RearangeBox');
-         var totalimages = localStorage.getItem('nonverifiedtotalimages');
-       for (let i = 0; i < totalimages; i++) {
-         
-         if (localStorage.getItem('tileremoved'+i)){
-        
-             
-         }else{
-             
-            var celement = localStorage.getItem('size'+i);
-           var cmaterial = localStorage.getItem('material'+i);
-    console.log(celement);
-           if ((celement=="A5")&&(cmaterial=="Matte")){
-               w8h8matte = w8h8matte + 1;
-                localStorage.setItem("w8h8matte", w8h8matte);
-           }
-           
-            if ((celement=="A4")&&(cmaterial=="Matte")){
-               w8h10matte = w8h10matte + 1;
-                localStorage.setItem("w8h10matte", w8h10matte);
-           }
-            if ((celement=="A3")&&(cmaterial=="Matte")){
-               w10h8matte = w10h8matte + 1;
-                localStorage.setItem("w10h8matte", w10h8matte);
-           }
-        
-             
-         }
-        
-        
-       
-    }
-        
-     
-    var w8h8matte   = localStorage.getItem("w8h8matte");
-    var w8h10matte  = localStorage.getItem("w8h10matte");
-    var w10h8matte  = localStorage.getItem("w10h8matte");
-    
-    
-    
-     
-    
-    
-    
-    
-    
-    
-    for (let i = 0; i < totalimages; i++) {
-         
-         if (localStorage.getItem('tileremoved'+i)){
-        
-             
-         }else{
-              var material = localStorage.getItem('material'+i);
-              var size = localStorage.getItem('size'+i);
-              if(size == "A5"){
-                  var sizecost = 333;
-              }
-              else if(size == "A4"){
-                  var sizecost = 420;
-              }
-              else if(size == "A3"){
-                  var sizecost = 420;
-              }
-             
-              else{
-                  
-              }
-              
-              
-              
-              
-              
-              
-            
-         }}
-         
-         
-         var materialprice = totalprice - pricewithoutmaterial;
-         localStorage.setItem("materialprice",materialprice);
-         
-    console.log(totalprice);
-     var total = document.getElementById("ktotalcharges1");
-     total.innerHTML = totalprice + shippingcost;
-     
-     var totalcharges = document.getElementById("totalcharges");
-     totalcharges.innerHTML = totalprice + shippingcost;
-     
-      var totalcharges = document.getElementById("ktotalcharges3");
-     totalcharges.innerHTML = totalprice + shippingcost;
-     
-     var totalcharges = document.getElementById("ktotalcharges2");
-     totalcharges.innerHTML = totalprice + shippingcost;
-     
-     
-    var totaltilles = localStorage.getItem("totalimages");
-      var mtotaltiles = document.getElementById("mtotaltiles");
-     mtotaltiles.innerHTML = totaltilles;
-    
-    localStorage.setItem("total",totalprice);
-    
-    }
     
     //IMAGE ARRAY;
     var imageIndex = 0;
@@ -275,8 +132,8 @@ function turnwhite(cropnum){
         const imageUrl = URL.createObjectURL(event.target.files[0]);
         const newImage = `<div class="RearangeBox rmbox imgThumbContainer" id="index${imageIndex}" style="padding: 10px; background-color: black; background-size: contain;">
             <i class="material-icons imgRemoveBtn" onclick="removeImagePrev(event)">delete</i>
-            <i style="color: #e91e63ba;font-family: Quicksand;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;" class="material-icons imgcolorbtn" id="color0" onclick="colorframe(${imageIndex})">color</i>
-            <i class="material-icons imgsize" id="size0" onclick="sizeframe(${imageIndex})" style="color: #e91e63ba;font-family: Quicksand;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;">size</i>
+            <i style="color: #eb845d;font-family: Quicksand;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;" class="material-icons imgcolorbtn" id="color0" onclick="colorframe(${imageIndex})">color</i>
+            <i class="material-icons imgsize" id="size0" onclick="sizeframe(${imageIndex})" style="color: #eb845d;font-family: Quicksand;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;">size</i>
             <div class="IMGthumbnail" id="bg0" style="background-color: rgb(250, 250, 250); padding: 0px;">
                 <img src="${imageUrl}" id="output">
             </div>
@@ -305,8 +162,14 @@ function turnwhite(cropnum){
         framer.style.removeProperty('display');
         event.target.value="";
         bhavupdate();
+        elementRemover();
     };
     
+    const elementRemover  = () => {
+        document.getElementById('noimages').style.display = "none";
+        document.getElementById('OrderSummary2').style.removeProperty('display');
+    }
+
     const inputclick = () => {
         document.getElementById('ima').click();
     }
