@@ -24,9 +24,7 @@ function turnwhite(cropnum){
     }
     
     
-    
-    
-    
+
     function updatesize(cropnum){
         bhavupdate();
         var mainid= "index" + cropnum;
@@ -36,6 +34,7 @@ function turnwhite(cropnum){
         if (selectedsize == "A5"){
             selectedwidth = "148px";
             selectedheight = "210px";
+            
         }
         
          if (selectedsize == "A4"){
@@ -57,8 +56,6 @@ function turnwhite(cropnum){
     celement.style.display = "none";
     var celement = document.getElementById("ssize"+cropnum);
     celement.innerHTML = selectedsize;
-    
-    
     }
 
     
@@ -103,7 +100,6 @@ function turnwhite(cropnum){
         // console.log(children[0].children[5].children[0].children[1].value);
         
             const eachsize = childrenArray[0].children[5].children[0].children[1].value
-            console.log(eachsize);
             if (eachsize == "A5") {
                 bhav += 299;
             }
@@ -113,8 +109,7 @@ function turnwhite(cropnum){
             else if(eachsize == "A3"){
                 bhav += 799;
             }
-    
-        console.log(bhav);
+
         document.getElementById('bhaav').innerHTML = bhav;
         document.getElementById('bhaav').style.removeProperty('display')
     }
@@ -163,19 +158,55 @@ function turnwhite(cropnum){
             <div style="color: black;margin-top: 24px;">Size : <span class="sizerender" id="ssize0">A5</span>
         </div> `        
         container.innerHTML = newImage;
-        console.log(event.target);
         var framer = document.getElementById('sortableImgThumbnailPreview')
         framer.style.removeProperty('display');
-        event.target.value="";
-        bhavupdate();
-        elementRemover();
+        bhavupdate(); 
+        document.getElementById('payout').style.removeProperty('display')      
     };
     
-    const elementRemover  = () => {
-        document.getElementById('noimages').style.display = "none";
-        document.getElementById('OrderSummary2').style.removeProperty('display');
-    }
+  
 
     const inputclick = () => {
         document.getElementById('ima').click();
     }
+
+    const uploadpic = async () => {
+     var file =document.getElementById("ima").files[0];
+     console.log(file);
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "uploading");
+      formData
+      console.log(formData);
+      await fetch("https://api.cloudinary.com/v1_1/dnokogmzj/image/upload", {
+        method: "POST",
+        
+        body: formData
+    })
+    .then(result => console.log(result));
+    document.getElementById('sortableImgThumbnailPreview').innerHTML = "";
+    bhavupdate();
+    
+
+
+    }
+
+    const uploadpicmobile = async () => {
+        var file =document.getElementById("ima").files[0];
+        console.log(file);
+         var formData = new FormData();
+         formData.append("file", file);
+         formData.append("upload_preset", "uploading");
+         formData
+         console.log(formData);
+         await fetch("https://api.cloudinary.com/v1_1/dnokogmzj/image/upload", {
+           method: "POST",
+           
+           body: formData
+       })
+       .then(result => console.log(result));
+
+    bhavupdate();
+    document.getElementById('noimages').style.removeProperty('display');
+    document.getElementById('sortableImgThumbnailPreview').innerHTML = "";
+       }

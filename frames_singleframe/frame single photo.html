@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <!-- IMPORTS -->
-    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frame</title>
 </head>
 <body>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="6b9d1accad7ca4a93660fc64-text/javascript"></script>
@@ -18,7 +21,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fxlgun/framespreview@main/frames_singleframe/mainstyle.css">
-    <script src="https://cdn.jsdelivr.net/gh/fxlgun/framespreview@main/frames_singleframe/script.js"></script>
+    <script src="script.js"></script>
+
+
     <div class="row" style="height: 100vh;">
         <div class="col-10" style="background-color: #fdf9f7;">
     <!--custom input box-->
@@ -32,7 +37,7 @@
         <div class="cloud-upload">
         <svg class="cameraicon" width="39" height="29" viewBox="0 0 39 29" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 5C2.23858 5 0 7.23858 0 10V24C0 26.7614 2.23858 29 5 29H34C36.7614 29 39 26.7614 39 24V10C39 7.23858 36.7614 5 34 5H28L26.5029 1.25722C26.1992 0.497902 25.4637 0 24.6459 0H14.3541C13.5363 0 12.8008 0.497903 12.4971 1.25722L11 5H5ZM30.5 9C29.6716 9 29 9.67157 29 10.5C29 11.3284 29.6716 12 30.5 12H33.5C34.3284 12 35 11.3284 35 10.5C35 9.67157 34.3284 9 33.5 9H30.5ZM27 17C27 20.866 23.866 24 20 24C16.134 24 13 20.866 13 17C13 13.134 16.134 10 20 10C23.866 10 27 13.134 27 17ZM20 21C22.2091 21 24 19.2091 24 17C24 14.7909 22.2091 13 20 13C17.7908 13 16 14.7909 16 17C16 19.2091 17.7908 21 20 21Z" fill="#eb845d"></path>
-        </svg><p style="padding: 7px;" class="uploadbuttontext">Upload Photos</p><input style="display: none;" type="file" name="ima" oninput="loadFile(event)" id="ima">
+        </svg><p style="padding: 7px;" class="uploadbuttontext">Upload Photos</p><input style="display: none;" type="file" name="file" oninput="loadFile(event)" id="ima">
         </div>
         </div>
         
@@ -41,8 +46,8 @@
 
     
     <br>
-    <div id="sortableImgThumbnailPreview" style="display: none; text-align: center;">
-    <div class="RearangeBox rmbox imgThumbContainer" id="index0" style="padding: 10px; background-color: black; background-size: contain;">
+    <div id="sortableImgThumbnailPreview" style="text-align: center;">
+    <!-- <div class="RearangeBox rmbox imgThumbContainer" id="index0" style="padding: 10px; background-color: black; background-size: contain;">
         <i class="material-icons imgRemoveBtn" onclick="">delete</i>
         <i style="color: #eb845d;font-family: Roboto;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;" class="material-icons imgcolorbtn" id="color0" onclick="colorframe(0)">color</i>
         <i class="material-icons imgsize" id="size0" onclick="sizeframe(0)" style="color: #eb845d;font-family: Roboto;font-size: 14px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;">size</i>
@@ -68,7 +73,7 @@
         </div>
         <div style="color: black;margin-top: 24px;">Size : <span class="sizerender" id="ssize0">A5</span>
     </div>   
-    </div>
+    </div> -->
 </div>
     
  
@@ -118,7 +123,9 @@
 <div style="
     text-align: center;
     padding-top: 2em;
-"> <button style="
+"> 
+<button id="payout" style="
+display: none;
 border: none;
 color: white;
 padding-top: 10px;
@@ -126,7 +133,18 @@ padding-bottom: 10px;
 border-radius: 9px;
 font-weight: 600;
 font-size: 18px;
-width: 92%;background-color: #eb845d;"  class="openMenu1 buttondesktop checkoutbutton" id="checkoutbutton" disabled="disabled">Checkout</button></div>
+width: 92%;background-color: #eb845d;" onclick="uploadpic()"  data-fullwidth="true" data-mobile="false" data-hook="add-to-cart-button" class="buttonnext2740944795_root Focusable430693659root Button482094058root Button482094058--fullWidth StatesButton3941734249root AddToCartButton3432622508addToCartButton _3NhSj openMenu1 buttondesktop checkoutbutton" aria-live="assertive" type="button" tabindex="0" aria-disabled="false"><span class="buttonnext2740944795_content">Add to Cart</span></button>
+  <!-- <button style="
+  display: none;
+  border: none;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 18px;
+  width: 92%;background-color: #eb845d;"  class="openMenu1 buttondesktop checkoutbutton" onclick="uploadpic()" id="checkoutbuttonA3">Checkout for A3</button> -->
+</div>
 <div class="filter-button" localizedpopularstring="POPULAR" id="mess"><p></p></div>
 </div>
 
