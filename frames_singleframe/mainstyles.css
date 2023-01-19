@@ -16,7 +16,7 @@ div{
 body{
     font-family: 'Quicksand';
     color: #36502e;
-    background-color:#fdf9f7;;
+    background-color:white;
 }
     #sortableImgThumbnailPreview{
     flex-direction: row;
