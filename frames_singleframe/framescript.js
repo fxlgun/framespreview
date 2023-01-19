@@ -26,7 +26,6 @@ function turnwhite(cropnum){
     
 
     function updatesize(cropnum){
-        bhavupdate();
         var mainid= "index" + cropnum;
         var selectedsize = document.getElementById("sizeoptions"+cropnum).value;
         var selectedwidth;
@@ -81,49 +80,30 @@ function turnwhite(cropnum){
     
     }
     
-    
-    //IMAGE ARRAY;
     var imageIndex = 0;
-    
     //PRICEEE
-    var bhav;
-    const bhavupdate = () => {
-        bhav = 0;
-        const framer = document.getElementById('sortableImgThumbnailPreview').children;
-        const childrenArray = [...framer]
-        if (childrenArray.length === 0) {
-            bhav = 0;
-            document.getElementById('bhaav').innerHTML = bhav;
-            document.getElementById('bhaav').style.display = "none";
-        return;
-        }
-        // console.log(children[0].children[5].children[0].children[1].value);
-        
-            const eachsize = childrenArray[0].children[5].children[0].children[1].value
-            if (eachsize == "A5") {
-                bhav += 299;
-            }
-            else if(eachsize == "A4"){
-                bhav += 499;
-            }
-            else if(eachsize == "A3"){
-                bhav += 799;
-            }
-
-        document.getElementById('bhaav').innerHTML = bhav;
-        document.getElementById('bhaav').style.removeProperty('display')
-    }
+    
     //imagedelete
     
     const removeImagePrev = (event) => {
         event.target.parentElement.remove();
-        bhavupdate();
-        if (!document.getElementById('sortableImgThumbnailPreview').hasChildNodes()) {
-            
-            
-                document.getElementById('noimages').style.removeProperty('display');
-            
+        if (document.getElementById('ima').parentElement.tagName == "DIV") {
+            document.getElementById('sortableImgThumbnailPreview').innerHTML = `<div style="text-align: left;">
+            <ol style="
+              line-height: 2;
+              font-size: 1.4em;
+              padding: 3em;
+          " id="noimages"><li>Select image.</li> 
+          <li>See preview in frame.</li>
+          <li>Upload the desired picture below from upload button. </li>
+          <li>Add to cart if you like preview.</li>
+      <li>To add multiple images, repeat the process from step 1.</li></ol>  
+          </div>`
+        } else {
+            document.getElementById('noimages').style.removeProperty('display')
         }
+                
+            
     }
     
     
@@ -159,9 +139,7 @@ function turnwhite(cropnum){
         </div> `        
         container.innerHTML = newImage;
         var framer = document.getElementById('sortableImgThumbnailPreview')
-        framer.style.removeProperty('display');
-        bhavupdate(); 
-        document.getElementById('payout').style.removeProperty('display')      
+        framer.style.removeProperty('display');     
     };
     
   
@@ -170,43 +148,4 @@ function turnwhite(cropnum){
         document.getElementById('ima').click();
     }
 
-    const uploadpic = async () => {
-     var file =document.getElementById("ima").files[0];
-     console.log(file);
-      var formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "uploading");
-      formData
-      console.log(formData);
-      await fetch("https://api.cloudinary.com/v1_1/dnokogmzj/image/upload", {
-        method: "POST",
-        
-        body: formData
-    })
-    .then(result => console.log(result));
-    document.getElementById('sortableImgThumbnailPreview').innerHTML = "";
-    bhavupdate();
     
-
-
-    }
-
-    const uploadpicmobile = async () => {
-        var file =document.getElementById("ima").files[0];
-        console.log(file);
-         var formData = new FormData();
-         formData.append("file", file);
-         formData.append("upload_preset", "uploading");
-         formData
-         console.log(formData);
-         await fetch("https://api.cloudinary.com/v1_1/dnokogmzj/image/upload", {
-           method: "POST",
-           
-           body: formData
-       })
-       .then(result => console.log(result));
-
-    bhavupdate();
-    document.getElementById('noimages').style.removeProperty('display');
-    document.getElementById('sortableImgThumbnailPreview').innerHTML = "";
-       }

@@ -19,11 +19,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fxlgun/framespreview@main/frames_singleframe/framestyles.css">
-    <script src="https://cdn.jsdelivr.net/gh/fxlgun/framespreview@main/frames_singleframe/framescript.js"></script>
+    <link rel="stylesheet" href="framestyles.css">
+    <script src="framescript.js"></script>
     
-    <div class="row" style="height:100vh;">
-        <div class="col-10" id="cold10">
+        
         <div class="content">
         <div class="upload" id="fsuploadmobile" data-toggle="modal" data-target="#myModal2">
         <div style="
@@ -46,85 +45,24 @@
     left: 17px;
     font-weight: 600;
     color: #36502e;
-">UPLOAD</span></a></div>
+">SELECT</span></a></div>
         </div>
         </div>
         <div  style="text-align: center;" class="cmobileflex" id="cmobileflex1" style="padding:14px; margin:auto;">
-        <p style="
+            <ol style="
+            width: 70%;
+            line-height: 2;
             text-align: center;
-            position: absolute;
-            top: 2em;
-            left: 0%;
-            font-size: 1.4em;
+            font-size: 1.3em;
             padding: 3em;
-        " id="noimages">Click <span>"+"</span> to upload your photos &amp; select the size</p>
+        " id="noimages"> <li>Select image.</li> 
+        <li>See preview in frame.</li>
+        <li>Upload the desired picture below </li>
+        <li>Add to cart if you like preview.</li>
+    <li>To add multiple images, repeat from step 1.</li> </ol>
         <div id="sortableImgThumbnailPreview">
         </div>
         </div>
-        </div>
-        </div>
-        <div class="checkoutmobile" style="
-    width: 100%;
-    text-align: center;
-    background: white;
-    position: fixed;
-    bottom: 0px;
-">
-<div style="
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding-top: 0em;
-    width: 86%;
-    margin: auto;
-    height: 4em;
-">
-
-<div style="display: none;" class="OrderSummary2" id="OrderSummary2" style="width: 50%; display: block;"><div class="summary-item strong" style="
-    font-size: 15px !important;
-    font-weight: 600;
-    float: right;
-    border: 1px solid #b00e8812;
-    padding-left: 1em;
-    padding-right: 2em;
-    border-radius: 4px;
-    background: #b00e880a;
-"><div class="text"><span class="summary-text">Total - &nbsp;&nbsp; </span></div><div class="value">₹ <span id="bhaav"></span></div>
-</div></div>
-<div class="OrderSummary1" id="OrderSummary1" style="width: 50%; display: none;"><div class="summary-item strong" style="
-    font-size: 15px !important;
-    font-weight: 600;
-    float: right;
-    border: 1px solid #b00e8812;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    border-radius: 4px;
-    background: #b00e880a;
-"><div class="text"><span class="summary-text" id="totalholder">Add first frame</span></div>
-</div></div>
-</div>
-<div><p id="mobilemin" style="
-    font-size: 16px;
+       
   
-"></p></div>
-
-<!-- <button style="
-font-family: 'Quicksand';
-display: none;
-    margin-top: 0.2em;
-    margin-bottom: 1.2em;
-    height: 42px;
-    width: 70%;
-    font-size: 15px;
-" class="openMenu1 buttondesktop checkoutbutton" onclick="uploadpicmobile()" id="checkoutbuttonmobileA5"></button> -->
-<button id="payout" style="
-font-family: 'Quicksand';
-display: none;
-    margin-top: 0.2em;
-    margin-bottom: 1.2em;
-    height: 42px;
-    width: 70%;
-    font-size: 15px;
-"  onclick="uploadpicmobile()"  data-fullwidth="true" data-mobile="false" data-hook="add-to-cart-button" class="openMenu1 buttondesktop checkoutbutton buttonnext2740944795_root Focusable430693659root Button482094058root Button482094058--fullWidth StatesButton3941734249root AddToCartButton3432622508addToCartButton _3NhSj" aria-live="assertive" type="button" tabindex="0" aria-disabled="false"><span class="buttonnext2740944795_content">Add to Cart</span></button> </div> 
-        
 </body>
