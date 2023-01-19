@@ -95,7 +95,7 @@ function turnwhite(cropnum){
               padding: 3em;
           " id="noimages"><li>Select image.</li> 
           <li>See preview in frame.</li>
-          <li>Upload the desired picture below from upload button. </li>
+          <li>Upload and submit the desired picture below from upload button. </li>
           <li>Add to cart if you like preview.</li>
       <li>To add multiple images, repeat the process from step 1.</li></ol>  
           </div>`
