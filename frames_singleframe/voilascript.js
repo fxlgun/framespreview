@@ -92,7 +92,7 @@ var imageIndex = 0;
 
 const removeImagePrev = (event) => {
   event.target.parentElement.remove();
-  console.log(document.getElementById("ima"));
+  document.getElementById("ima").value = ""
   if (document.getElementById("ima").parentElement.tagName == "DIV") {
     document.getElementById(
       "sortableImgThumbnailPreview"
@@ -101,13 +101,11 @@ const removeImagePrev = (event) => {
               line-height: 2;
               font-size: 1.4em;
               padding: 3em;
-          " id="noimages"><li>Select image.</li> 
-          <li>See preview in frame.</li>
-          <li>Upload and submit the desired picture below from upload button. </li>
-          <li>Add to cart if you like preview.</li>
-      <li>To add multiple images, repeat the process from step 1.</li></ol>  
+          " id="noimages"><li>Select image from your Computer.</li> 
+          <li>Upload and submit the desired picture below from upload button.</li></ol>  
           </div>`;
   } else {
+    document.getElementById("ima").value = ""
     document.getElementById("noimages").style.removeProperty("display");
   }
 };
