@@ -133,7 +133,7 @@ var loadFile = function (event) {
             </div>
             <div class="choosesize" id="choosesize${imageIndex}" style="position: absolute; width: 92%; bottom: 5%; margin: auto; display: none;">
                 <div style="padding-top: 0.7em;display: flex; flex-wrap: wrap; justify-content: space-around;margin-top: 25px;background: white !important;box-shadow: 0px 0px 10px #00000014;padding-left: 12px;padding-right: 12px;padding-bottom: 0.7em;border-radius: 12px"> 
-                    <span style="color: black;font-weight: 500;font-family: 'roboto';">Select Size :</span> 
+                    <span style="color: black;font-weight: 500;font-family: 'roboto';">Size :</span> 
                     <select onchange="updatesize(${imageIndex})" name="sizeoptions" id="sizeoptions${imageIndex}" style=" text-align: center; font-size: 14px ;border: 0px solid #80808014;padding-left: 0.5em;padding-right: 0.5em;">
                         <option value="A5 (portrait)">A5 (portrait)</option>
                         <option value="A4 (portrait)">A4 (portrait)</option> 
